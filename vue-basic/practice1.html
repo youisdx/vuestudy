@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title></title>
+		<!-- 通过cdn引入vue.js -->
+		<link rel="stylesheet" type="text/css" href="css/font-awesome.min.css" />
+		<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+		<style type="text/css">
+			.card {
+				width: 100%;
+				height: 100%;
+				margin-right: 30px;
+				border: 1px solid #EEEEEE;
+				border-radius: 10px;
+			}
+
+			.top {
+				display: flex;
+				justify-content: space-between;
+			}
+			.sd{
+				display:flex;
+			}
+			
+			.des{
+				margin-right:10px;
+				margin-left:10px;
+				
+			}
+			.tu{
+				width:55px;
+				height:55px;
+				border-radius: 50%;
+				margin-left: 10px;
+				margin-top:15px;
+			}
+			.left{
+				display:flex;
+			}
+			.author{
+				margin-left:10px;
+			}
+			.intro{
+				display:flex;
+				justify-content: space-between;
+			}
+			.wen{
+				color:green;
+			}
+			.zi{
+				color:#333333;
+			}
+		</style>
+	</head>
+	<body>
+		<!-- vue-app根容器 -->
+		<div id="app">
+
+			<div class="container">
+				<div class="top">
+					<p>推荐作者</p>
+					<div class="sd">
+						<p class="des"><i class="icon-spinner icon-large"></i>换一批</p>
+					</div>
+				</div>
+				<!-- 循环遍历books数组 -->
+				<div class="card" v-for="book in books">
+					<div class="intro">
+						<div class="left">
+							<div class="avatar">
+								<img :src="book.avatar" class="tu" >
+							</div>
+							<div class="author">
+								<p>{{book.author}}</p>
+								<p>{{book.neirong}}</p>
+							</div>
+						</div>
+						<div class="right">
+							<p v-if="book.att" class="wen"><i class="icon-plus"></i>关注</p>
+							<p v-else class="zi"><i class="icon-ok"></i>已关注</p>
+
+						</div>
+					</div>
+				</div>
+			</div>
+
+		</div>
+		<script type="text/javascript">
+			//实例化一个vue对象
+			var app = new Vue({
+				el: '#app',
+				data: {
+					show: true,
+					books: [{
+							avatar: 'img/a.jpg',
+							author: '胡七筒',
+							neirong: '写了325k字·11k喜欢',
+							att:false
+
+						},
+						{
+							avatar: 'img/b.jpg',
+							author: '汪波_偶遇科学',
+							neirong: '写了302.1k字·1.9k喜欢',
+							att:true
+
+						},
+						{
+							avatar: 'img/c.jpg',
+							author: '梅拾樱',
+							neirong: '写了269.3k字·23.4k喜欢',
+							att:false
+
+						},
+						{
+							avatar: 'img/d.jpeg',
+							author: '徐林Grace',
+							neirong: '写了677.9k字·5.5k喜欢',
+							att:true
+
+						},
+						{
+							avatar: 'img/e.jpeg',
+							author: '行距版君',
+							neirong: '写了535.1k字·51.8k喜欢',
+							att:true
+
+						}
+					]
+				}
+			})
+		</script>
+
+	</body>
+</html>
