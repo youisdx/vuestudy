@@ -2,15 +2,16 @@
 <html>
 	<head>
 		<meta charset="utf-8" />
-		<title></title>
+		<title>computed属性练习</title>
 		<!-- 通过cdn引入vue.js -->
 		<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
 	</head>
 	<body>
 		<!-- vue-app根容器 -->
 		<div id="app">
-			<h2 v-if="show">{{name}}</h2>
-			<button type="button" v-on:click="handClick">隐藏/显示</button>
+			
+			<button type="button" @click="show1" >调用methods点击</button>
+			<button type="button" @click="show2" >computed点击</button>
 			
 
 		</div>
@@ -19,13 +20,20 @@
 			var app = new Vue({
 				el: '#app',
 				data:{
-					name:'2019',
-					show:true
+					name1:'methods',
+					name2:'computed'
 				},
 				methods:{
-					handClick:function(){
-						// 把当前的show属性相反
-						this.show=!this.show;
+					
+				},
+				computed:{
+					show1:function(){
+						alert(this.name);
+						
+					},
+					show2:function(){
+						alert(this.name);
+						
 					}
 				}
 			})
